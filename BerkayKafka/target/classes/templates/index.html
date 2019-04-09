@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Spring Boot Thymeleaf Hello World Example</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        .column {
+            float: left;
+            width: 100px;
+            padding: 10px;
+            height: 300px; /* Should be removed. Only for demonstration */
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+<h1>Kafka Server Stream Monitor</h1>
+<div class="row">
+    <div class="column">
+        <p>London</p>
+        <p>Moscow</p>
+        <p>Tokyo</p>
+        <p>Istanbul</p>
+        <p>Beijing</p>
+        <p>TOTAL</p>
+    </div>
+    <div class="column">
+        <p id="london"></p>
+        <p id="moscow"></p>
+        <p id="tokyo"></p>
+        <p id="istanbul"></p>
+        <p id="beijing"></p>
+        <p id="demo"></p>
+
+    </div>
+</div>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+
+
+    var offset = /*[[${array}]]*/ 'default';
+    var off = offset.length;
+    var london = /*[[${london}]]*/ 'default';
+    var moscow = /*[[${moscow}]]*/ 'default';
+    var tokyo = /*[[${tokyo}]]*/ 'default';
+    var beijing = /*[[${beijing}]]*/ 'default';
+    var istanbul = /*[[${istanbul}]]*/ 'default';
+    var counterFoo = setCounter();
+
+    var x = setInterval(function() {
+        document.getElementById("demo").innerHTML = off;
+        window.location.reload(true);
+    }, 500);
+
+    function setCounter(){
+        document.getElementById("london").innerHTML = london;
+        document.getElementById("moscow").innerHTML = moscow;
+        document.getElementById("tokyo").innerHTML = tokyo;
+        document.getElementById("istanbul").innerHTML = istanbul;
+        document.getElementById("beijing").innerHTML = beijing;
+    }
+
+    // function reload(){
+    //     var container = document.getElementById("demo");
+    //     var content = container.innerHTML;
+    //     container.innerHTML = content;
+    // }
+    /*]]>*/
+</script>
+
+</body>
+</html>
